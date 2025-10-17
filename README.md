@@ -1,111 +1,151 @@
-📘 Projeto PHP – Sistema de Cadastro de Usuários
-
-Um simples sistema em PHP com integração a banco de dados MySQL, que permite visualizar e cadastrar usuários.
-O projeto é ideal para estudos de CRUD (Create, Read), conexão com banco de dados e manipulação de formulários em PHP.
-
+📘 Sistema CRUD de Usuários em PHP
+Mostrar Imagem
+Mostrar Imagem
+Mostrar Imagem
+Mostrar Imagem
+Sistema completo de gerenciamento de usuários desenvolvido em PHP com banco de dados MySQL. Implementa todas as operações CRUD (Create, Read, Update, Delete) com interface moderna e intuitiva.
 🚀 Funcionalidades
-
-✅ Exibir todos os usuários cadastrados em uma tabela
-
-✅ Adicionar novos usuários (nome e e-mail)
-
-✅ Botão para retornar à página inicial
-
-✅ Conexão com o banco de dados utilizando PDO
-
-✅ Interface simples e organizada com HTML e CSS
-
+✅ Listar Usuários - Visualização de todos os usuários cadastrados em tabela
+✅ Cadastrar Usuário - Adicionar novos usuários com nome e e-mail
+✅ Editar Usuário - Alterar dados de usuários existentes
+✅ Excluir Usuário - Remover usuários com confirmação de segurança
+✅ Mensagens de Feedback - Notificações de sucesso/erro em cada operação
+✅ Validação de Dados - Sanitização e validação de inputs
+✅ Segurança - Proteção contra SQL Injection e XSS
+📸 Screenshots
+Tela Principal - Lista de Usuários
+Mostrar Imagem
+Tela de Cadastro
+Mostrar Imagem
+Tela de Edição
+Mostrar Imagem
 🗂️ Estrutura do Projeto
-📦 Google-Maps (ou nome do seu repositório)
- ┣ 📜 index.php          → Página principal que exibe a lista de usuários
- ┣ 📜 add.php            → Página para cadastrar um novo usuário
- ┣ 📜 banco.php          → Arquivo de conexão com o banco de dados (PDO)
- ┣ 📜 style.css          → Estilos básicos da interface
- ┗ 📜 README.md          → Este arquivo de documentação
-
-⚙️ Requisitos
-
-Antes de rodar o projeto, você precisa ter instalado:
-
-🧰 XAMPP
- ou outro servidor PHP
-
-🐬 Banco de dados MySQL
-
-💻 Navegador web (Google Chrome, Edge, etc.)
-
+📦 crud-php-usuarios/
+ ┣ 📜 index.php          # Página principal - Lista de usuários
+ ┣ 📜 add.php            # Cadastro de novo usuário
+ ┣ 📜 editar.php         # Edição de usuário existente
+ ┣ 📜 excluir.php        # Exclusão de usuário
+ ┣ 📜 banco.php          # Conexão com banco de dados (PDO)
+ ┣ 📜 style.css          # Estilos CSS (opcional)
+ ┗ 📜 README.md          # Documentação do projeto
+🛠️ Tecnologias Utilizadas
+TecnologiaDescriçãoPHP 8+Linguagem principal do backendMySQLBanco de dados relacionalPDOInterface de acesso ao banco (segura)HTML5Estrutura das páginasCSS3Estilização moderna e responsivaJavaScriptConfirmação de exclusão
 💾 Configuração do Banco de Dados
-
-Abra o phpMyAdmin (geralmente em http://localhost/phpmyadmin)
-
-Crie o banco de dados:
-
-CREATE DATABASE db_aula;
-
-
-Crie a tabela de usuários:
+1. Criar o Banco de Dados
+Abra o phpMyAdmin e execute o seguinte SQL:
+sqlCREATE DATABASE db_aula;
 
 USE db_aula;
 
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL
+    email VARCHAR(150) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+2. Configurar Conexão
+No arquivo banco.php, ajuste as credenciais se necessário:
+php$host = 'localhost';
+$dbname = 'db_aula';
+$username = 'root';
+$password = '';
+⚙️ Instalação e Execução
+Pré-requisitos
 
+🧰 XAMPP ou WAMP (Apache + MySQL + PHP)
+💻 Navegador web moderno
+📝 Editor de código (VS Code recomendado)
 
-Verifique se o arquivo banco.php está configurado corretamente com:
+Passo a Passo
+1️⃣ Clone o repositório
+bashgit clone https://github.com/Lucass09876/crud-php-usuarios.git
+2️⃣ Mova para o diretório do servidor
+bash# Windows (XAMPP)
+cp -r crud-php-usuarios C:\xampp\htdocs\
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_aula";
+# Linux/Mac
+cp -r crud-php-usuarios /opt/lampp/htdocs/
+3️⃣ Configure o banco de dados
 
-▶️ Como Executar o Projeto
+Acesse: http://localhost/phpmyadmin
+Execute o SQL fornecido acima
 
-Copie a pasta do projeto para o diretório:
+4️⃣ Inicie o servidor
 
-C:\xampp\htdocs\
+Abra o XAMPP Control Panel
+Inicie Apache e MySQL
 
+5️⃣ Acesse o sistema
+http://localhost/crud-php-usuarios/index.php
+📚 Como Usar
+Cadastrar Novo Usuário
 
-Inicie o Apache e o MySQL no painel do XAMPP.
+Na página inicial, clique em "Cadastro"
+Preencha o nome e e-mail
+Clique em "Gravar"
+Usuário será adicionado à lista
 
-Acesse no navegador:
+Editar Usuário
 
-http://localhost/Google-Maps/index.php
+Na lista de usuários, clique em "Editar"
+Altere os dados desejados
+Clique em "Salvar Alterações"
+Dados serão atualizados
 
+Excluir Usuário
 
-Clique em “Adicionar Novo Usuário” para cadastrar novos registros.
+Na lista de usuários, clique em "Deletar"
+Confirme a exclusão
+Usuário será removido permanentemente
 
-Use o botão “Voltar para a Página Inicial” em add.php para retornar à lista.
+🔒 Recursos de Segurança
+
+✅ PDO com Prepared Statements - Previne SQL Injection
+✅ filter_input() - Sanitiza dados de entrada
+✅ htmlspecialchars() - Previne XSS
+✅ Validação de tipos - Garante integridade dos dados
+✅ Confirmação de exclusão - Evita remoção acidental
+
+📊 Operações CRUD
+OperaçãoArquivoMétodo HTTPSQLCreateadd.phpPOSTINSERTReadindex.phpGETSELECTUpdateeditar.phpPOSTUPDATEDeleteexcluir.phpGETDELETE
+🎨 Características da Interface
+
+🎯 Design minimalista e profissional
+📱 Layout responsivo
+🎨 Cores intuitivas (verde para sucesso, vermelho para exclusão)
+⚡ Transições suaves
+💬 Feedback visual em todas as ações
+🖱️ Hover effects nos elementos interativos
 
 🧠 Aprendizados
+Este projeto reforça conceitos importantes:
 
-Esse projeto reforça conceitos importantes como:
+Operações CRUD completas em PHP
+Conexão segura com banco de dados usando PDO
+Validação e sanitização de dados
+Organização de código em múltiplos arquivos
+Boas práticas de segurança web
+Interface de usuário responsiva
 
-Estrutura básica de um CRUD em PHP
+🚧 Melhorias Futuras
 
-Uso de PDO para acesso seguro ao banco de dados
+ Sistema de autenticação (login/logout)
+ Paginação de resultados
+ Busca e filtros
+ Upload de foto de perfil
+ Exportação de dados (CSV/PDF)
+ API RESTful
+ Testes automatizados
+ Docker para ambiente
 
-Validação e sanitização de dados (filter_input)
-
-Organização de código entre arquivos (index.php, add.php, banco.php)
-
-🛠️ Tecnologias Utilizadas
-Tecnologia	Descrição
-PHP 8+	Linguagem principal do projeto
-MySQL	Banco de dados relacional
-HTML5 / CSS3	Estrutura e estilo das páginas
-XAMPP	Servidor local com Apache e MySQL
 👨‍💻 Autor
-
 Lucas dos Santos Costa
 📍 Estudante de Análise e Desenvolvimento de Sistemas
-💡 Apaixonado por tecnologia, programação e desenvolvimento web
+💡 Apaixonado por tecnologia e desenvolvimento web
+Mostrar Imagem
+Mostrar Imagem
+📝 Licença
+Este projeto é livre para uso educacional. Sinta-se à vontade para clonar, modificar e aprender! 🚀
 
-🔗 GitHub: @Lucass09876
-
-📜 Licença
-
-Este projeto é livre para uso educacional e pode ser adaptado para estudos e melhorias.
-Sinta-se à vontade para clonar, editar e aprender com ele! 🚀
+⭐ Se este projeto te ajudou, considere dar uma estrela no repositório!
+Desenvolvido com 💚 para fins educacionais
